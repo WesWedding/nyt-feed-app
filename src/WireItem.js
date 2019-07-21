@@ -1,15 +1,7 @@
 import React from 'react'
-export function ArticleItem(props) {
-    /** @type NYTWireArticle props.item */
-    const item = props.item;
-    return <div className={'article-item'}>
-        <div className={'title'}>{item.title}</div>
-        <div className={'abstract'}>{item.abstract} <a href={item.url}>Read more...</a></div>
-    </div>;
-}
 
 /**
- * The Article object returned by the NYT API.
+ * The Article object returned by the NYT Newswire endpoint.
  *
  * @typedef {Object} NYTWireArticle
  *
@@ -37,3 +29,12 @@ export function ArticleItem(props) {
  * @property {string} updated_date
  * @property {string} url
  */
+
+export function WireItem(props) {
+  /** @type NYTWireArticle props.item */
+  const item = props.item;
+  return <div className={'article-item'}>
+    <div className={'title'}>{item.title}</div>
+    <div className={'abstract'}>{item.abstract} <a href={item.url}>Read more...</a></div>
+  </div>;
+}
