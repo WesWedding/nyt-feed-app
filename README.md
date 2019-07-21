@@ -1,4 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# NYT Feeds
+A small app that grabs the latest world news from the NYT and provides articles related to the regions
+in each article.
+
 
 ## Available Scripts
 
