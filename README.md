@@ -4,6 +4,15 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 A small app that grabs the latest world news from the NYT and provides articles related to the geographic
 regions related to each article.
 
+## Configuration
+The API key used by this app is stored in the `.env` file.
+
+```
+REACT_APP_NYT_KEY="KEY_GOES_HERE"
+```
+
+A valid key has been included; but if a new key is required, it can be put here.
+
 
 ## Available Scripts
 
