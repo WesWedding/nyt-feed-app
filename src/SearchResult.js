@@ -1,4 +1,5 @@
 import React from 'react'
+import {NiceDate} from "./NiceDate";
 
 /**
  * An Article Search result from the NYT API.
@@ -34,5 +35,5 @@ export function SearchResult (props) {
   /** @type {NYTSearchArticle} item */
   const item = props.item;
   console.log('headline', item);
-  return <div className={'search-result'}><a href={item.web_url}>{item.headline.main}</a></div>
+  return <div className={'search-result'}><a href={item.web_url}>{item.headline.main}</a> <NiceDate dateString={item.pub_date}/> </div>
 }

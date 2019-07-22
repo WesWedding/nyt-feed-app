@@ -1,16 +1,15 @@
 import React, {useState, useEffect} from 'react';
-import {ArticleItem} from "./ArticleItem";
 import {SearchResult} from "./SearchResult";
 
 export function GeoItems(props) {
 
   // In order to be used as query items, the geo strings need to be wrapped in quotes
   const geoStrings = props.geos.map((geo) => `"${geo}"`);
-
   const baseUrl = 'https://api.nytimes.com/svc/search/v2/articlesearch.json?sort=newest';
-  const apiKey =  'api-key=vAqNAG36g21TaUrlNdUvUAdq2OZ3DL5f';
+  // TODO: Get this key from props.
+  const apiKey =  `api-key=${process.env.REACT_APP_NYT_KEY}`;
   const glocations = geoStrings.join(' ');
-  const pub_range = '"2019-07-18" TO "2019-07-20"';
+  const pub_range = getPubRangeForPastWeek();
   const query = `fq=glocations.contains:(${glocations}) AND type_of_material:("News") AND pub_date:[${pub_range}]`;
   const url = `${baseUrl}&${apiKey}&${query}`;
 
@@ -63,4 +62,15 @@ export function GeoItems(props) {
       {content}
     </div>
   );
+}
+
+function getPubRangeForPastWeek() {
+  const today = new Date();
+  var lastWeek = new Date();
+  lastWeek.setDate(today.getDate() - 7);
+
+  const todayStr = `${today.getFullYear()}-${today.getMonth()}-${today.getDate()}`;
+  const oldStr = `${lastWeek.getFullYear()}-${lastWeek.getMonth()}-${lastWeek.getDate()}`;
+
+  return `"${oldStr}" TO "${todayStr}"`;
 }
