@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {ArticleItem} from "./ArticleItem";
+import './ArticleList.css'
+import {EllipsisSpinner} from "./EllipsisSpinner";
 
 export function ArticleList(props) {
 
@@ -24,18 +26,22 @@ export function ArticleList(props) {
         })
   }, [props.uri, pendingRequest]);
 
-  if (error) {
-    return <div className={"articles"}>Error: {error.message}</div>
-  }
-  if (!isLoaded) {
-    return <div className={"articles"}>Loading...</div>
-  }
+  let content = <div className="loading"><EllipsisSpinner/></div>;
 
-  return (
-    <div className={"articles"}>
+  if (error) {
+    content = <div className={"error"}>Error: {error.message}</div>
+  }
+  if (isLoaded) {
+    content = <div className={"results"}>
       {items.map(item => (
         <ArticleItem key={item.slug_name} item={item} />
       ))}
+    </div>
+  }
+
+  return (
+    <div className={"article-list"}>
+      {content}
     </div>
   );
 }

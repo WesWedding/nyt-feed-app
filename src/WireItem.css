@@ -1,0 +1,27 @@
+
+.wire-item {
+    text-align: left;
+    padding: 2em 4em 1.2em;
+}
+
+.wire-item .head {
+    margin: 0 auto 1em;
+}
+
+.wire-item .title {
+    font: 500 normal 1.75rem 'Martel', serif;
+    line-height: 1.1;
+}
+
+.wire-item .date {
+    font-size: 0.8rem;
+    line-height: 1.0;
+}
+
+.wire-item .abstract {
+    font: 400 normal 1rem 'Martel', serif;
+}
+
+.wire-item .more {
+    font-size: 0.65rem;
+}

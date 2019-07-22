@@ -1,5 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import {SearchResult} from "./SearchResult";
+import './GeoItems.css'
+import {EllipsisSpinner} from "./EllipsisSpinner";
 
 export function GeoItems(props) {
 
@@ -47,19 +49,20 @@ export function GeoItems(props) {
     content = <div className={'error'}> Error: {error.message}</div>;
   }
   if (!isLoaded && pendingRequest) {
-    content = <div>Loading...</div>
+    content = <div><EllipsisSpinner/></div>
   }
   if (isLoaded) {
-    console.log('items', items);
     content = items.map((item) =>
       <SearchResult key={item._id} item={item}/>
     )
   }
 
   return (
-    <div className={"geo-items"}>
-      <div>More articles from {geoStrings}</div>
-      {content}
+    <div className={'geo-items'}>
+      <div className={'head'}>More news from {geoStrings.join(', ')}</div>
+      <div className={'results'}>
+        {content}
+      </div>
     </div>
   );
 }

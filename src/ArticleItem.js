@@ -1,6 +1,7 @@
-import React from 'react'
-import {WireItem} from './WireItem'
+import React from 'react';
+import {WireItem} from './WireItem';
 import {GeoItems} from "./GeoItems";
+import './ArticleItem.css'
 
 export function ArticleItem(props) {
   // Sometimes geo_facets come up as an empty string, so let's make those uniform with the rest..

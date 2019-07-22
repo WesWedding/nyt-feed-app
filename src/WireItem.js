@@ -1,5 +1,6 @@
 import React from 'react'
 import {NiceDate} from "./NiceDate";
+import './WireItem.css'
 
 /**
  * The Article object returned by the NYT Newswire endpoint.
@@ -34,9 +35,11 @@ import {NiceDate} from "./NiceDate";
 export function WireItem(props) {
   /** @type NYTWireArticle props.item */
   const item = props.item;
-  return <div className={'article-item'}>
-    <div className={'title'}>{item.title}</div>
-    <div className={'date'}><NiceDate dateString={item.published_date} /></div>
-    <div className={'abstract'}>{item.abstract} <a href={item.url}>Read more...</a></div>
-  </div>;
+  return <article className={'wire-item'}>
+    <header className={'head'}>
+      <div className={'title'}>{item.title}</div>
+      <div className={'date'}><NiceDate dateString={item.published_date} /></div>
+    </header>
+    <div className={'abstract'}>{item.abstract} <a className={'more'} href={item.url} target={'_blank'}>Read...</a></div>
+  </article>;
 }
