@@ -1,12 +1,12 @@
 import React, {useState, useEffect} from 'react';
-import {WireItem} from './WireItem'
+import {ArticleItem} from "./ArticleItem";
 
 export function ArticleList(props) {
 
   const [error, setError] = useState(null);
   const [pendingRequest, setPendingRequest] = useState(true);
   const [isLoaded, setLoaded] = useState(false);
-  /** @type {Array<NYTWireArticle>}items */
+  /** @type {Array<NYTWireArticle>} items */
   const [items, setItems] = useState([]);
 
   useEffect(() => {
@@ -34,7 +34,7 @@ export function ArticleList(props) {
   return (
     <div className={"articles"}>
       {items.map(item => (
-        <WireItem key={item.slug_name} item={item}/>
+        <ArticleItem key={item.slug_name} item={item} />
       ))}
     </div>
   );
